@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class test extends ApplicationBaseRunner {
+public class ApplicationTests extends ApplicationBaseRunner {
 
     @Test
     public void tredningTest() {
@@ -16,6 +16,20 @@ public class test extends ApplicationBaseRunner {
         app.openMainMenu();
         app.clickToMainMenu("Trending");
         assertEquals("Trending", app.getTitleWindow());
+    }
+
+    @Test
+    public void toastTest() {
+        app.openApplication();
+        app.openMainMenu();
+        app.clickToMainMenu("Send feedback");
+        app.clickButtonWithName("OK");
+        app.intputTextInEditText("hello");
+        app.clickButtonWithName("Description");
+        assertTrue(app.getText("Xiaomi"));
+        assertTrue(app.getText("Redmi 4X"));
+        app.clickSubmitButton();
+        // assertEquals();
     }
 
     @Test
@@ -27,22 +41,7 @@ public class test extends ApplicationBaseRunner {
         app.scrollForwardThemeMenu(2);
         app.clickThemeButtonOk();
         // assertEquals("Trending",app.getTitleWindow());
-    }
-
-    @Test
-    public void toastTest() throws UiObjectNotFoundException {
-        app.openApplication();
-        app.openMainMenu();
-        app.clickToMainMenu("Send feedback");
-        app.clickButtonWithName("OK");
-        app.intputTextInEditText("hello");
-        app.clickButtonWithName("Description");
-        assertTrue(app.getText("Xiaomi"));
-        assertTrue(app.getText("Redmi 4X"));
-
-        app.clickSubmitButton();
-
-        // assertEquals("Trending",app.getTitleWindow());
+        // Как проверить, что установлена тема не понял
     }
 
     @Test
@@ -60,7 +59,5 @@ public class test extends ApplicationBaseRunner {
         app.openMainMenu();
         app.scrollMenuToItemName("Restore Purchases");
         app.clickToMainMenu("Restore Purchases");
-       // assertEquals("Changelog", app.getTextFromItem("Changelog"));
     }
-
 }

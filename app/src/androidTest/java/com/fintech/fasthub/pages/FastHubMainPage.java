@@ -16,14 +16,14 @@ import android.support.test.uiautomator.Until;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class FastHubPage {
+public class FastHubMainPage {
     private static final String PACKAGE = "com.fastaccess.github.debug";
     private static final long TIMEOUT = TimeUnit.SECONDS.toMillis(10);
     private final UiDevice device;
     private final Context context;
     private final Intent intent;
 
-    public FastHubPage(UiDevice device) {
+    public FastHubMainPage(UiDevice device) {
         this.device = device;
         this.context = InstrumentationRegistry.getInstrumentation().getContext();
         this.intent = context.getPackageManager().getLaunchIntentForPackage(PACKAGE);
@@ -98,6 +98,5 @@ public class FastHubPage {
         SearchCondition<UiObject2> condition = Until.findObject(byselector);
         return Objects.requireNonNull(device.wait(condition, TIMEOUT));
     }
-
 }
 
