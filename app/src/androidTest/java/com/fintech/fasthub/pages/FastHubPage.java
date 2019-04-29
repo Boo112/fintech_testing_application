@@ -12,13 +12,6 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
-
-import com.fastaccess.ui.widgets.ViewPagerView;
-
-import org.junit.rules.Timeout;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +29,7 @@ public class FastHubPage {
         this.intent = context.getPackageManager().getLaunchIntentForPackage(PACKAGE);
     }
 
-    public void open() {
+    public void openApplication() {
         String launcherPackage = device.getLauncherPackageName();
         device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), TIMEOUT);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -65,14 +58,14 @@ public class FastHubPage {
         waitFindObject(By.text(buttonName)).click();
     }
 
-    public void scrollForwardTheme(int steps) throws UiObjectNotFoundException {
+    public void scrollForwardThemeMenu(int steps) throws UiObjectNotFoundException {
         UiSelector uiSelector = new UiSelector().scrollable(true).className("android.support.v4.view.ViewPager");
         UiScrollable theme = new UiScrollable(uiSelector);
         theme.setAsHorizontalList();
         theme.scrollForward(steps);
     }
 
-    public void scrollForwardMenuToItemName(String name) throws UiObjectNotFoundException {
+    public void scrollMenuToItemName(String name) throws UiObjectNotFoundException {
         UiSelector uiSelector = new UiSelector().scrollable(true).className("android.support.v7.widget.RecyclerView");
         UiScrollable theme = new UiScrollable(uiSelector);
         theme.scrollDescriptionIntoView(name);
