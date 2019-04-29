@@ -8,10 +8,10 @@ import com.fintech.fasthub.pages.FastHubPage;
 import org.junit.Before;
 
 //@RunWith(AndroidJUnit4.class)
-public class Application {
-    protected FastHubPage app=new FastHubPage(getDevice());
+public class ApplicationBaseRunner {
+    protected FastHubPage app = new FastHubPage(getDevice());
 
-@Before
+    @Before
     public void setUp() {
         getDevice().pressHome();
         getDevice().pressBack();
@@ -20,5 +20,4 @@ public class Application {
     private UiDevice getDevice() {
         return UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
     }
-
 }

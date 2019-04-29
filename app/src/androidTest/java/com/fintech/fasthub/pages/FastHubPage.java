@@ -79,17 +79,19 @@ public class FastHubPage {
         waitFindObject(By.clazz("android.widget.EditText")).setText(text);
     }
 
-    public boolean in(String text) {
-        BySelector title = By.res("com.fastaccess.github.debug:id/editText)");
-        device.wait(Until.findObject(title), TIMEOUT);
-        return device.findObject(By.res("com.fastaccess.github.debug:id/editText)"))
-                .getText().contains(text);
 
-        //return waitFindObject(By.res("com.fastaccess.github.debug:id/editText)")).getText().contains(text);
+    public void clickSubmitButton() {
+        waitFindObject(By.desc("Submit")).click();
     }
 
     public String getTextFromItem(String itemName) {
         return waitFindObject(By.text(itemName)).getText();
+    }
+
+    public boolean getText(String itemName) {
+        return waitFindObject(By.res("com.fastaccess.github.debug:id/editText"))
+                .getText()
+                .contains(itemName);
     }
 
     private UiObject2 waitFindObject(BySelector byselector) {

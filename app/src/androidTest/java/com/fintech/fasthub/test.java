@@ -2,13 +2,13 @@ package com.fintech.fasthub;
 
 import android.support.test.uiautomator.UiObjectNotFoundException;
 
-import com.fintech.fasthub.base.Application;
+import com.fintech.fasthub.base.ApplicationBaseRunner;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class test extends Application {
+public class test extends ApplicationBaseRunner {
 
     @Test
     public void tredningTest() {
@@ -37,7 +37,10 @@ public class test extends Application {
         app.clickButtonWithName("OK");
         app.intputTextInEditText("hello");
         app.clickButtonWithName("Description");
-      //  assertTrue(app.fdsfds("Description", "Xiaomi"));
+        assertTrue(app.getText("Xiaomi"));
+        assertTrue(app.getText("Redmi 4X"));
+
+        app.clickSubmitButton();
 
         // assertEquals("Trending",app.getTitleWindow());
     }
